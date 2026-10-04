@@ -77,10 +77,31 @@
       padding: 18px 22px 0;
       flex: 1;
     }
+    .social-btn {
+      align-self: center;
+      width: 32px;
+      height: 32px;
+      margin-left: auto;
+      margin-right: 16px;
+      background: #000;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      flex: none;
+    }
+    .social-btn:hover { background: #222; color: #fff; }
+    .social-btn svg,
+    .twitter svg,
+    .foot-social svg,
+    .nav-social svg {
+      width: 16px;
+      height: 16px;
+      max-width: none;
+      display: block;
+    }
     .search {
       display: flex;
       align-items: center;
-      margin-left: auto;
       padding-right: 8px;
     }
     .search input {
@@ -127,6 +148,11 @@
     .nav a[aria-current="page"] {
       color: var(--cyan);
       background: #fff;
+    }
+    .nav-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     /* Article */
@@ -266,7 +292,10 @@
     }
     .copy-btn:hover, .copy-btn:focus-visible { background: #fff; color: var(--card); }
     .twitter {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       background: var(--cyan);
       color: #fff;
       text-align: center;
@@ -276,23 +305,26 @@
       padding: 22px 28px;
       border: 1px solid var(--cyan);
     }
+    .twitter svg { width: 18px; height: 18px; }
     .twitter:hover { background: var(--cyan-dark); color: #fff; border-color: var(--cyan-dark); }
 
-    /* Left rail — Twitter only */
-    .rail {
+    /* Left rail — this button is the Twitter icon */
+    #rail-twitter {
       position: fixed;
       left: 14px;
       top: 280px;
+      display: block;
       width: 36px;
       height: 36px;
-      background: #55acee;
-      color: #fff;
-      display: grid;
-      place-items: center;
+      padding: 0;
+      background-color: #000;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 18px 18px;
       z-index: 5;
     }
-    .rail:hover { background: #3d97db; color: #fff; }
-    .rail svg { width: 16px; height: 16px; }
+    #rail-twitter:hover { background-color: #222; }
 
     .toast {
       position: fixed;
@@ -328,6 +360,16 @@
     }
     footer ul { list-style: none; margin: 0; padding: 0; }
     footer li { margin: 0 0 6px; font-size: 14px; }
+    .foot-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #000;
+      color: #fff;
+    }
+    .foot-social:hover { background: #222; color: #fff; }
     .legal {
       border-top: 1px solid #e1e6ea;
       padding: 16px 0 22px;
@@ -345,7 +387,7 @@
       .meta { padding-left: 8px; }
       .hero { height: 240px; }
       .card { min-height: 0; }
-      .rail { display: none; }
+      #rail-twitter { display: none; }
       .tagline { display: none; }
       .foot { grid-template-columns: 1fr; }
     }
@@ -363,6 +405,9 @@
     <div class="top">
       <a class="logo" href="#fable">OwlOWL</a>
       <p class="tagline">One owl for the flock<br>that stayed behind.</p>
+      <a class="social-btn" id="head-twitter" href="https://x.com/SI_owl_rh" target="_blank" rel="noopener" aria-label="Twitter">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
       <form class="search" role="search">
         <label class="vh" for="q" style="position:absolute;left:-999px">Search</label>
         <input id="q" type="search" placeholder="Search" name="s">
@@ -379,16 +424,12 @@
         <li><a href="#fable" aria-current="page">The Fable</a></li>
         <li><a href="#owl">The Owl</a></li>
         <li><a href="#contract">Contract</a></li>
-        <li><a href="https://x.com/SI_owl_rh" id="nav-twitter" target="_blank" rel="noopener">Twitter</a></li>
+        <li><a class="nav-social" href="https://x.com/SI_owl_rh" id="nav-twitter" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Twitter</a></li>
       </ul>
     </nav>
   </header>
 
-  <a class="rail" id="rail-twitter" href="https://x.com/SI_owl_rh" target="_blank" rel="noopener" aria-label="Twitter">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="currentColor" d="M22 5.8c-.7.3-1.5.6-2.3.7a4 4 0 0 0 1.8-2.2 8 8 0 0 1-2.6 1 4 4 0 0 0-6.9 3.7A11.5 11.5 0 0 1 3 4.9a4 4 0 0 0 1.3 5.4 4 4 0 0 1-1.8-.5v.1a4 4 0 0 0 3.2 4 4 4 0 0 1-1.8.1 4 4 0 0 0 3.8 2.8A8.1 8.1 0 0 1 2 18.3 11.4 11.4 0 0 0 8.1 20c7.4 0 11.5-6.1 11.5-11.5v-.5A8 8 0 0 0 22 5.8z"/>
-    </svg>
-  </a>
+  <a id="rail-twitter" href="https://x.com/SI_owl_rh" target="_blank" rel="noopener" aria-label="Twitter"></a>
 
   <article id="fable">
     <div class="hero" aria-hidden="true">
@@ -510,7 +551,7 @@
             <button class="copy-btn" type="button" id="copy-ca">Copy</button>
           </div>
         </div>
-        <a class="twitter" id="card-twitter" href="https://x.com/SI_owl_rh" target="_blank" rel="noopener">Twitter</a>
+        <a class="twitter" id="card-twitter" href="https://x.com/SI_owl_rh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Twitter</a>
       </aside>
     </div>
   </article>
@@ -528,7 +569,7 @@
       <div>
         <h2>Social</h2>
         <ul>
-          <li><a id="foot-twitter" href="https://x.com/SI_owl_rh" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a class="foot-social" id="foot-twitter" href="https://x.com/SI_owl_rh" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></li>
         </ul>
       </div>
       <div>
@@ -550,7 +591,7 @@
     const CA = "TBA";
     const TWITTER = "https://x.com/SI_owl_rh";
 
-    document.querySelectorAll("#nav-twitter, #rail-twitter, #card-twitter, #foot-twitter").forEach((el) => {
+    document.querySelectorAll("#head-twitter, #nav-twitter, #rail-twitter, #card-twitter, #foot-twitter").forEach((el) => {
       el.href = TWITTER;
     });
 
